@@ -6,11 +6,22 @@
 }
 
 #panel-elements .elements-container {
-
     margin-top: 25%;
-    margin-left: 25%;
 }
 
 .elements-container li {
     list-style: none;
+    cursor: pointer;
+}
+
+li{
+    color: white;
+}
+
+h2, h1{
+    font-size: 1rem;
+}
+
+h3{
+    font-size: 0.9rem;
 }

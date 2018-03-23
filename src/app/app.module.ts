@@ -1,20 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AlertModule} from 'ngx-bootstrap';
 
 
-import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
-
+import {AppComponent} from './app.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {MainContainerModule} from "./main-container/main-container.module";
+import {AngularFireModule} from "angularfire2";
+import {environment} from "../environments/environment";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavigationComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AlertModule.forRoot(),
+        MainContainerModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase)
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

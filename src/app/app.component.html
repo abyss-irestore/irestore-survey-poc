@@ -1,4 +1,5 @@
 <div id="side_panel">
-    <app-navigation></app-navigation>
+    <app-navigation (onChangeView)="onChangeView($event)"></app-navigation>
+    <app-main-container [currentComponentName]="currentViewName" [data]="data"></app-main-container>
 </div>
 <div id="map_canvas"></div>

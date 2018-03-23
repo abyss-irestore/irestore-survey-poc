@@ -1,0 +1,16 @@
+<div class="surveys-list">
+    <table class="table">
+        <thead>
+        <tr>
+            <th *ngFor="let column of columns" scope="col">{{column}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let survey of surveys">
+            <td scope="row" *ngFor="let surveyItem of objectKeys(survey)">
+                {{isDate(survey[surveyItem])? (survey[surveyItem] | date:'mediumDate') : survey[surveyItem]}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
