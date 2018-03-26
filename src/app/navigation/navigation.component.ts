@@ -7,7 +7,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  @Output() onChangeView = new EventEmitter<String>();
+  @Output() onChangeView = new EventEmitter<any>();
 
   constructor() { }
 

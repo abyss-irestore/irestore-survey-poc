@@ -8,7 +8,6 @@ import {SurveysService} from "./surveys-list/surveys.service";
 import {CommonModule} from "@angular/common";
 import {AgmCoreModule} from "@agm/core";
 import {MapsService} from "./map-view/maps.service";
-import {ObjectKeysPipe} from "../object-keys-pipe.pipe";
 
 @NgModule({
     declarations: [

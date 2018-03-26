@@ -3,7 +3,6 @@ import {MapsService} from "./maps.service";
 import {ChildComponent} from "../child-component";
 
 
-
 @Component({
     selector: 'app-map-view',
     templateUrl: './map-view.component.html',
@@ -15,7 +14,7 @@ export class MapViewComponent implements OnInit, ChildComponent {
     lat: number = 40.60326;
 
     data = null;
-    geoJsonObject : Object;
+    geoJsonObject: GeoJsonObject;
 
 
     constructor(private mapsService: MapsService) {
@@ -23,9 +22,8 @@ export class MapViewComponent implements OnInit, ChildComponent {
 
     ngOnInit() {
         this.mapsService.getGeoJson(this.data)
-            .then(data => {
-                const {geometry = {}} = data.features[0] || {},
-                    {coordinates = []} = geometry,
+            .then((data: GeoJsonObject) => {
+                const {coordinates} = data.features[0].geometry,
                     coords = Array.isArray(coordinates[0]) ? coordinates[0] : coordinates;
 
                 this.lng = coords[0];
@@ -37,4 +35,19 @@ export class MapViewComponent implements OnInit, ChildComponent {
     }
 
 
+}
+
+interface GeoJsonObject {
+    "type": String,
+    "source": String,
+    "features": Array<{
+        "type": String,
+        "properties": {
+            "style ": String
+        },
+        "geometry": {
+            "type": String,
+            "coordinates": Array<any>
+        }
+    }>
 }

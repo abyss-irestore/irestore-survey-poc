@@ -17,7 +17,7 @@ export class SurveysListComponent implements OnInit, ChildComponent {
   constructor(private surveysService: SurveysService) { }
 
   ngOnInit() {
-    this.surveysService.getSurveys().then(surveys =>  this.surveys = surveys )
+    this.surveysService.getSurveys().then((surveys: Array<any>) =>  this.surveys = surveys )
   }
 
   isDate(date){
