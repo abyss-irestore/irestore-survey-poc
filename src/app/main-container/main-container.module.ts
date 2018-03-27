@@ -8,6 +8,7 @@ import {SurveysService} from "./surveys-list/surveys.service";
 import {CommonModule} from "@angular/common";
 import {AgmCoreModule} from "@agm/core";
 import {MapsService} from "./map-view/maps.service";
+import { NguiMapModule} from '@ngui/map';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {MapsService} from "./map-view/maps.service";
         CommonModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAi7WJdratHVCIS1yVOxVZEwSfWFyKyHbw'
-        })
+        }),
+        NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyAi7WJdratHVCIS1yVOxVZEwSfWFyKyHbw'})
     ],
     exports: [MainContainerComponent],
     providers: [MapsService, SurveysService]
