@@ -1,6 +1,9 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {MapsService} from "./maps.service";
 import {ChildComponent} from "../child-component";
+import {AgmInfoWindow} from "@agm/core";
+
+import * as _ from "lodash";
 
 
 @Component({
@@ -16,6 +19,10 @@ export class MapViewComponent implements OnInit, ChildComponent {
     data = null;
     geoJsonObject: GeoJsonObject;
 
+    @ViewChild('infoWindow') infoWindow: AgmInfoWindow;
+
+    infoWindowDeails: Object = {};
+
 
     constructor(private mapsService: MapsService) {
     }
@@ -30,12 +37,30 @@ export class MapViewComponent implements OnInit, ChildComponent {
                 this.lat = coords[1];
 
                 this.geoJsonObject = data;
+
+
+
             })
             .catch(console.log);
     }
 
+    onLayerClick(event) {
+        this.infoWindowDeails = _.pick(event.feature.f, [
+            'LASTUSER', 'GlobalID', 'CreationDate', 'Creator', 'EditDate', 'Editor',
+            'DATECREATE','DATEMODIFI', 'MATERIAL', 'FUELTYPE', 'CPSYSTEMNU',
+            'INSTALLDAT', 'SPIPENO_SE', 'SHAPE_STLe', 'REMARKS'
+        ]);
+
+
+        this.infoWindowDeails.lat = event.latLng.lat();
+        this.infoWindowDeails.lng = event.latLng.lng();
+
+        this.infoWindow.open().then(console.log);
+    }
+
 
 }
+
 
 interface GeoJsonObject {
     "type": String,

@@ -23,7 +23,7 @@ export class MainContainerComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadComponent('map');
+        this.loadComponent(null);
     }
 
     @Input()

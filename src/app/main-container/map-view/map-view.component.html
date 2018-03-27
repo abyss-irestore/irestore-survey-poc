@@ -1,3 +1,17 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" style="height: 100%">
-    <agm-data-layer *ngIf="geoJsonObject" [geoJson]="geoJsonObject" ></agm-data-layer>
+    <agm-info-window [disableAutoPan]="true" [latitude]="infoWindowDeails.lat" [longitude]="infoWindowDeails.lng" #infoWindow>
+
+        <div *ngIf="infoWindowDeails.Creator"><strong>Creator: </strong> <p>{{infoWindowDeails.Creator}}</p></div>
+        <div *ngIf="infoWindowDeails.CreationDate"><strong>Creation Date: </strong> <p>{{infoWindowDeails.CreationDate | date:'mediumDate'}}</p></div>
+        <div *ngIf="infoWindowDeails.GlobalID"><strong>Global ID: </strong> <p>{{infoWindowDeails.GlobalID}}</p></div>
+        <div *ngIf="infoWindowDeails.DATECREATE"><strong>Date Created: </strong> <p>{{infoWindowDeails.DATECREATE | date:'mediumDate'}}</p></div>
+        <div *ngIf="infoWindowDeails.MATERIAL"><strong>Material: </strong> <p>{{infoWindowDeails.MATERIAL}}</p></div>
+        <div *ngIf="infoWindowDeails.FUELTYPE"><strong>Fuel Type: </strong> <p>{{infoWindowDeails.FUELTYPE}}</p></div>
+        <div *ngIf="infoWindowDeails.INSTALLDAT"><strong>Installation Date: </strong> <p>{{infoWindowDeails.INSTALLDAT | date:'mediumDate'}}</p></div>
+        <div *ngIf="infoWindowDeails.EditDate"><strong>Edit Date: </strong> <p>{{infoWindowDeails.EditDate | date:'mediumDate'}}</p></div>
+        <div *ngIf="infoWindowDeails.Editor"><strong>Editor: </strong> <p>{{infoWindowDeails.Editor}}</p></div>
+        <div *ngIf="infoWindowDeails.LASTUSER"><strong>Last Used By: </strong> <p>{{infoWindowDeails.LASTUSER}}</p></div>
+
+    </agm-info-window>
+    <agm-data-layer *ngIf="geoJsonObject" [geoJson]="geoJsonObject" (layerClick)="onLayerClick($event)"></agm-data-layer>
 </agm-map>

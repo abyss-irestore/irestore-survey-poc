@@ -23,8 +23,6 @@ export class SurveysListComponent implements OnInit, ChildComponent {
         this.surveysService.getSurveys()
             .then((surveys: Array<any>) => {
                 this.surveys = surveys;
-
-                this.selectSurvey(0); //REMOVE
             })
     }
 
