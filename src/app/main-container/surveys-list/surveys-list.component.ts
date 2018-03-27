@@ -10,7 +10,7 @@ import {SurveysService} from "./surveys.service";
 export class SurveysListComponent implements OnInit, ChildComponent {
   data: any;
   surveys: Array<any> = [{}];
-  objectKeys = Object.keys;
+  selectedSurvey = null;
 
   private columns : Array<String> = ["Survey", "Inspector", "Town", "Leak", "Date", "Start Time", "End Time", "Distance Travelled"];
 
@@ -22,6 +22,10 @@ export class SurveysListComponent implements OnInit, ChildComponent {
 
   isDate(date){
     return date instanceof Date;
+  }
+
+  selectSurvey(index){
+    this.selectedSurvey = this.surveys && this.surveys.length ? this.surveys[index] : null;
   }
 
 }
